@@ -1,8 +1,12 @@
 # DQ 殿祁战队 · 成长记录与成员社区
 
-DQ 殿祁战队的官方网站源码，线上地址：<https://dqzz2020.xyz>
-
 一个基于 Next.js + Supabase 的战队社区平台，包含战队介绍、成员展示、成长史、荣誉墙、社区帖子，以及成员个人中心与管理后台。
+
+## 在线访问
+
+**正式网站已部署上线：<https://dqzz2020.xyz>**，直接打开即可使用，无需任何安装。
+
+以下「快速开始 / 生产部署」章节仅面向想获取源码、自行搭建一套的开发者。
 
 ## 功能
 
@@ -20,7 +24,7 @@ DQ 殿祁战队的官方网站源码，线上地址：<https://dqzz2020.xyz>
 - Tailwind CSS 4
 - [Supabase](https://supabase.com)（Postgres + Auth + Storage，RLS 行级安全）
 
-## 快速开始
+## 快速开始（本地开发，非线上站点）
 
 要求 Node.js 20+。
 
@@ -30,7 +34,7 @@ cp .env.example .env.local   # 填入你自己的 Supabase 项目密钥
 npm run dev
 ```
 
-打开 <http://localhost:3000>。
+然后在浏览器打开 <http://localhost:3000> 预览你本地运行的开发副本（正式网站请直接访问 <https://dqzz2020.xyz>）。
 
 ### 环境变量
 
