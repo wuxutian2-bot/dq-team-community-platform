@@ -1,0 +1,53 @@
+DQ 战队网站服务器部署说明（2026-11-17 最新版）
+
+本包基于 dq-temp 当前最新代码打包，替代 2026-05-11 的旧部署包。
+
+一、这个部署包里已经包含：
+1. app（全部页面：首页、关于、成员、动态、成就、历史、登录、个人中心、后台管理等）
+2. components
+3. lib
+4. public
+5. scripts（assign-default-avatars.mjs，默认头像分配维护脚本，可选执行）
+6. package.json
+7. package-lock.json
+8. next.config.ts
+9. next-env.d.ts
+10. postcss.config.mjs
+11. tsconfig.json
+12. proxy.ts
+13. .env.production
+
+二、这个部署包里没有包含：
+1. node_modules
+2. .next
+3. supabase 迁移目录（数据库结构已在 Supabase 云端，无需重复执行）
+4. 本地临时文件、设计备份、开发文档
+5. Excel 导入源文件
+
+三、服务器要求：
+1. Node.js 20 或更高版本
+2. npm 可用
+
+四、上传到服务器后，在当前目录执行：
+1. npm ci
+2. npm run build
+3. npm run start
+（项目配置了 output: standalone，npm run start 会提示一条警告，可忽略，服务正常启动；
+也可以改用 node .next/standalone/server.js 启动，但需先把 .next/static 复制到
+.next/standalone/.next/static、把 public 复制到 .next/standalone/public。）
+
+五、如果你要长期挂着运行，推荐：
+1. 使用 PM2
+2. 启动命令：pm2 start npm --name dq-team -- run start
+
+六、环境变量说明：
+1. 当前包里已经放入 .env.production
+2. 如果你的正式域名不是当前本地地址，请把 NEXT_PUBLIC_SITE_URL 改成你的正式域名
+3. 这个文件里包含 Supabase 密钥，只能放在服务器里，不能公开外传
+
+七、额外提醒：
+1. 批量 Excel 导入功能如果还要继续用，需要把 Excel 文件
+   「殿祁（🐮🐴小窝）_$ǿ_20260427_215142.xlsx」放到项目上级目录，并保持原文件名不变
+2. 当前这个部署包是“源码部署包”，首次到服务器后需要在服务器上执行 build
+3. 图片上传上限为 5MB（next.config.ts 中 serverActions.bodySizeLimit 已设为 6mb）
+4. 如果服务器前面有 Nginx 等反向代理，请把客户请求体大小限制也调到 6MB 以上
