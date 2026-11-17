@@ -34,7 +34,7 @@ cp .env.example .env.local   # 填入你自己的 Supabase 项目密钥
 npm run dev
 ```
 
-然后在浏览器打开 <http://localhost:3000> 预览你本地运行的开发副本（正式网站请直接访问 <https://dqzz2020.xyz>）。
+启动后即可在浏览器预览你本地运行的开发副本。正式网站请直接访问 <https://dqzz2020.xyz>。
 
 ### 环境变量
 
